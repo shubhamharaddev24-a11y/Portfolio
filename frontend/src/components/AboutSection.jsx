@@ -1,81 +1,88 @@
 import React from 'react';
 import { portfolioData } from '../data/portfolioData';
-import { Trophy, GraduationCap, Award, Zap, Code, ShieldCheck } from 'lucide-react';
+import { Trophy, GraduationCap, Briefcase, CheckCircle2 } from 'lucide-react';
 
 export const AboutSection = () => {
   const { personal, education, achievements } = portfolioData;
 
   return (
-    <section id="about" className="py-24 bg-slate-50/80 border-t border-slate-200/80 w-full">
-      <div className="w-full max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16">
+    <section id="about" className="py-24 sm:py-32 bg-white border-t border-slate-100 w-full overflow-hidden">
+      <div className="w-full max-w-[1400px] mx-auto px-6 sm:px-12 lg:px-16">
         
-        {/* Section Title */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#0088cc] font-mono">
-            About Me
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1.5 tracking-tight">
-            Professional Background &amp; Core Strengths
-          </h2>
-          <div className="w-20 h-1 bg-[#0088cc] mx-auto mt-3.5 rounded-full"></div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
           
-          {/* Bio Box */}
-          <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow space-y-6">
-            <h3 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
-              Full-Stack Software Engineer architecting mission-critical platforms in Mumbai, India
-            </h3>
+          {/* Left Column: Vertical Pill Badge + Circular Portrait */}
+          <div className="flex items-center gap-6 sm:gap-8 shrink-0">
             
-            <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-              {personal.summary}
-            </p>
+            {/* Vertical "ABOUT ME" Pill matching reference image */}
+            <div className="hidden sm:flex items-center justify-center border-2 border-[#eab308] rounded-full py-6 px-2 text-[#ca8a04] shadow-xs">
+              <span 
+                className="text-xs font-bold uppercase tracking-[0.25em] select-none"
+                style={{
+                  writingMode: 'vertical-rl',
+                  transform: 'rotate(180deg)',
+                }}
+              >
+                ABOUT ME
+              </span>
+            </div>
 
-            <div className="pt-4 border-t border-slate-100 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs sm:text-sm">
-              <div className="p-4 bg-sky-50/70 rounded-2xl border border-sky-100/80 hover:bg-sky-50 transition-colors">
-                <span className="text-slate-500 block text-xs font-medium">Experience</span>
-                <span className="font-extrabold text-slate-900 text-base sm:text-lg mt-0.5 block">2+ Years</span>
-              </div>
-              <div className="p-4 bg-orange-50/70 rounded-2xl border border-orange-100/80 hover:bg-orange-50 transition-colors">
-                <span className="text-slate-500 block text-xs font-medium">Current Role</span>
-                <span className="font-extrabold text-slate-900 text-base sm:text-lg mt-0.5 block">Full-Stack @ Mytek</span>
-              </div>
-              <div className="p-4 bg-emerald-50/70 rounded-2xl border border-emerald-100/80 hover:bg-emerald-50 transition-colors">
-                <span className="text-slate-500 block text-xs font-medium">Education</span>
-                <span className="font-extrabold text-slate-900 text-base sm:text-lg mt-0.5 block">B.Sc. IT (7.5 CGPA)</span>
+            {/* Mobile Header Badge */}
+            <div className="sm:hidden flex items-center justify-center border-2 border-[#eab308] rounded-full px-4 py-1 text-[#ca8a04] text-xs font-bold tracking-widest uppercase mb-4">
+              ABOUT ME
+            </div>
+
+            {/* Circular Photo Card with subtle background circle matching reference */}
+            <div className="relative">
+              {/* Soft circular background ring */}
+              <div className="absolute inset-0 bg-[#f1f5f9] rounded-full scale-105 -z-10"></div>
+              
+              {/* Main Circular Profile Image */}
+              <div className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full overflow-hidden bg-slate-100 shadow-xl border-4 border-white">
+                <img
+                  src="/assets/shubham_real.jpg"
+                  alt={personal.name}
+                  className="w-full h-full object-cover object-[center_20%] hover:scale-105 transition-transform duration-500"
+                  onError={(e) => {
+                    e.target.src = '/assets/avatar.jpg';
+                  }}
+                />
               </div>
             </div>
+
           </div>
 
-          {/* Awards & Education Highlights */}
-          <div className="lg:col-span-5 space-y-5">
+          {/* Right Column: Quoted Editorial Content matching reference typography */}
+          <div className="flex-1 space-y-6 text-center lg:text-left">
             
-            {/* Award Card */}
-            <div className="bg-white p-7 rounded-3xl border border-slate-200/90 shadow-sm hover:border-[#c26d38]/50 hover:shadow-md transition-all flex items-start gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-orange-100 text-[#c26d38] flex items-center justify-center shrink-0">
-                <Trophy className="w-7 h-7" />
-              </div>
-              <div>
-                <span className="text-xs font-bold text-[#c26d38] uppercase tracking-wider font-mono">Recognition</span>
-                <h4 className="text-base sm:text-lg font-bold text-slate-900 mt-0.5">Conqueror of the Month Award</h4>
-                <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
-                  Awarded by Mytek Innovations for outstanding project delivery, system architecture, and technical execution.
-                </p>
-              </div>
-            </div>
+            {/* Main Headline Paragraph */}
+            <p className="text-base sm:text-lg lg:text-xl font-bold text-slate-800 leading-relaxed">
+              &ldquo;Hi, I&apos;m <span className="text-slate-900 font-extrabold">{personal.name.split(' ')[0]}</span>, a Full-Stack Software Engineer offering scalable web application architecture, real-time WebSocket systems, and Generative AI pipelines. I engineer high-concurrency enterprise platforms that deliver high performance and measurable business impact.
+            </p>
 
-            {/* Education Card */}
-            <div className="bg-white p-7 rounded-3xl border border-slate-200/90 shadow-sm hover:border-[#0088cc]/50 hover:shadow-md transition-all flex items-start gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-sky-100 text-[#0088cc] flex items-center justify-center shrink-0">
-                <GraduationCap className="w-7 h-7" />
+            {/* Secondary Paragraph */}
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+              I have been into full-stack engineering and distributed systems for over <strong className="text-slate-900 font-bold">2+ years</strong> across the <strong className="text-slate-900 font-bold">MERN stack (React 19, Node.js, Express, MongoDB)</strong>, <strong className="text-slate-900 font-bold">BullMQ &amp; Redis</strong> background task queues, and <strong className="text-slate-900 font-bold">Socket.io</strong> real-time systems. I constantly build with modern architectures to ensure sub-second response times and zero thread-blocking bottlenecks.
+            </p>
+
+            {/* Third Paragraph */}
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+              Awarded the <strong className="text-slate-900 font-bold">Conqueror of the Month Award</strong> at <strong className="text-slate-900 font-bold">Mytek Innovations</strong> for outstanding project delivery and architecture execution, and graduated with a <strong className="text-slate-900 font-bold">B.Sc. in Information Technology</strong> from Mumbai University (D G Ruparel College) with a <strong className="text-slate-900 font-bold">CGPA of 7.50 / 10</strong>.&rdquo;
+            </p>
+
+            {/* Quick Summary Credentials Pills */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-4 border-t border-slate-100">
+              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200/80 text-xs font-semibold text-slate-700">
+                <Briefcase className="w-3.5 h-3.5 text-[#0088cc]" />
+                <span>2+ Yrs Production Exp</span>
               </div>
-              <div>
-                <span className="text-xs font-bold text-[#0088cc] uppercase tracking-wider font-mono">Academic Degree</span>
-                <h4 className="text-base sm:text-lg font-bold text-slate-900 mt-0.5">B.Sc. in Information Technology</h4>
-                <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
-                  Mumbai University (D G Ruparel College) &bull; 2022–2024 &bull; <strong className="text-slate-800">CGPA: 7.50 / 10</strong>
-                </p>
+              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200/80 text-xs font-semibold text-slate-700">
+                <Trophy className="w-3.5 h-3.5 text-[#eab308]" />
+                <span>Conqueror of the Month</span>
+              </div>
+              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200/80 text-xs font-semibold text-slate-700">
+                <GraduationCap className="w-3.5 h-3.5 text-[#0088cc]" />
+                <span>B.Sc. IT (7.50 CGPA)</span>
               </div>
             </div>
 

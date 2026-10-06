@@ -223,7 +223,7 @@ export const Projects = () => {
                 {/* Link */}
                 <div className="pt-2">
                   <a
-                    href="https://mytek.ai"
+                    href="https://borade.ai"
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-900 hover:text-[#0066ff] transition-colors"
