@@ -19,23 +19,25 @@ export const AboutSection = () => {
         {/* Main Content Area: Floated Circle with Circular Text Wrapping */}
         <div className="max-w-4xl mx-auto">
           
-          {/* Floated Circular Image with shape-outside for organic curve wrapping */}
-          <div 
-            className="mx-auto sm:mx-0 sm:float-left mb-6 sm:mb-2 sm:mr-8 md:mr-10 relative group"
-            style={{
-              shapeOutside: 'circle(50% at 50% 50%)',
-              shapeMargin: '28px',
-            }}
-          >
-            <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden bg-[#f1f3f6] border-4 border-white shadow-xl relative transition-transform duration-500 group-hover:scale-[1.02]">
-              <img
-                src="/assets/shubham_real.jpg"
-                alt={personal.name}
-                className="w-full h-full object-cover object-[center_18%]"
-                onError={(e) => {
-                  e.target.src = '/assets/avatar.jpg';
-                }}
-              />
+          {/* Circular Image: Centered on mobile (flex justify-center), floated on sm+ screens */}
+          <div className="flex justify-center sm:block sm:float-left mb-8 sm:mb-2 sm:mr-8 md:mr-10">
+            <div 
+              className="relative group"
+              style={{
+                shapeOutside: 'circle(50% at 50% 50%)',
+                shapeMargin: '28px',
+              }}
+            >
+              <div className="w-60 h-60 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden bg-[#f1f3f6] border-4 border-white shadow-xl relative transition-transform duration-500 group-hover:scale-[1.02]">
+                <img
+                  src="/assets/shubham_real.jpg"
+                  alt={personal.name}
+                  className="w-full h-full object-cover object-[center_18%]"
+                  onError={(e) => {
+                    e.target.src = '/assets/avatar.jpg';
+                  }}
+                />
+              </div>
             </div>
           </div>
 
