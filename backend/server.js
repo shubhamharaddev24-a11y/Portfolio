@@ -61,7 +61,11 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Portfolio Backend Server running on http://localhost:${PORT}`);
-  console.log(`📡 API Health Check available at http://localhost:${PORT}/api`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Portfolio Backend Server running on http://localhost:${PORT}`);
+    console.log(`📡 API Health Check available at http://localhost:${PORT}/api`);
+  });
+}
+
+export default app;
