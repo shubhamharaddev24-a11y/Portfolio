@@ -57,14 +57,9 @@ export const ContactSection = () => {
       } else {
         throw new Error(data.message || 'Submission failed');
       }
-    } catch {
-      setSuccessMsg(`Thank you, ${formData.name}! Your message has been sent. Shubham will reply to ${formData.email} soon.`);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      confetti({
-        particleCount: 60,
-        spread: 60,
-        origin: { y: 0.6 },
-      });
+    } catch (err) {
+      console.error('Contact form submission error:', err);
+      setErrorMsg(err.message || 'Unable to deliver message at this time. Please reach out directly to shubhamharad25@gmail.com.');
     } finally {
       setLoading(false);
     }
@@ -234,6 +229,13 @@ export const ContactSection = () => {
                 <div className="mt-5 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm flex items-center gap-2.5">
                   <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
                   <span>{successMsg}</span>
+                </div>
+              )}
+
+              {errorMsg && (
+                <div className="mt-5 p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-sm flex items-center gap-2.5">
+                  <AlertCircle className="w-5 h-5 text-rose-600 shrink-0" />
+                  <span>{errorMsg}</span>
                 </div>
               )}
             </div>
