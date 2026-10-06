@@ -44,8 +44,13 @@ export const ContactSection = () => {
         body: JSON.stringify(formData),
       });
 
-      const data = await res.json();
-      if (res.ok && data.success) {
+      let data = null;
+      const contentType = res.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        data = await res.json();
+      }
+
+      if (res.ok && data?.success) {
         setSuccessMsg(data.message);
         setFormData({ name: '', email: '', subject: '', message: '' });
         confetti({
@@ -55,7 +60,7 @@ export const ContactSection = () => {
           colors: ['#0088cc', '#c26d38', '#38bdf8', '#34d399'],
         });
       } else {
-        throw new Error(data.message || 'Submission failed');
+        throw new Error(data?.message || (res.status === 404 ? 'Service endpoint not found (404). Please check deployment configuration.' : `Submission failed (status: ${res.status}).`));
       }
     } catch (err) {
       console.error('Contact form submission error:', err);
